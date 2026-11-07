@@ -22,7 +22,9 @@ export function PomodoroPage() {
   const [stopping, setStopping] = useState<number | null>(null);
   const [history, setHistory] = useState(false);
 
-  useEffect(() => pomodoro.syncDuration(), [settings.pomodoro]);
+  useEffect(() => {
+    pomodoro.syncDuration();
+  }, [settings.pomodoro]);
   useEffect(() => {
     if (!pomo.subjectId && subjects[0]) pomodoro.setTarget(subjects[0].id);
   }, [pomo.subjectId, subjects]);
@@ -208,7 +210,9 @@ function TimeBySubject() {
 function RhythmCard() {
   const settings = useSettings();
   const [p, setP] = useState(settings.pomodoro);
-  useEffect(() => setP(settings.pomodoro), [settings.pomodoro]);
+  useEffect(() => {
+    setP(settings.pomodoro);
+  }, [settings.pomodoro]);
   const preset = p.focus === 25 && p.short === 5 ? '25' : p.focus === 50 && p.short === 10 ? '50' : 'custom';
   const dirty = JSON.stringify(p) !== JSON.stringify(settings.pomodoro);
   const opt = (xs: number[], v: number) => [...new Set([...xs, v])].sort((a, b) => a - b);

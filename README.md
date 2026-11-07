@@ -2,7 +2,7 @@
 
 Caderno de estudos para a faculdade de Medicina, feito como **PWA** (funciona no iPhone e no notebook com o mesmo código) e sincronizado pelo **Supabase**.
 
-**Funcionalidades:** agenda de provas/entregas (diária, semanal, mensal, anual) com contagem regressiva e lembretes · grade horária do período, editável a qualquer momento (mudanças valem "daqui pra frente" e o histórico fica) · matérias e temas com status *não vi / estudei / revisado* · revisão espaçada automática com intervalos escolhidos por tema · registro de questões com gráfico de desempenho · planejamento semanal que avisa quando a semana não cabe nas horas livres e sugere redistribuição · pomodoro com horas por matéria · notas com peso, média e quanto falta para passar · resumos e links/arquivos por tema · modo claro/escuro/sistema · busca (⌘K / Ctrl K) · funciona offline.
+**Funcionalidades:** agenda de provas/entregas (diária, semanal, mensal, anual) com contagem regressiva e lembretes · grade horária do período, editável a qualquer momento (mudanças valem "daqui pra frente" e o histórico fica) · matérias e temas com status *não vi / estudei / revisado* · revisão espaçada automática com intervalos escolhidos por tema · registro de questões com gráfico de desempenho · planejamento semanal que avisa quando a semana não cabe nas horas livres e sugere redistribuição · pomodoro com horas por matéria · notas com peso, média e quanto falta para passar · resumos e links/arquivos por tema · resumos e questões gerados no ChatGPT (usando a assinatura dela, sem API) com modo quiz · modo claro/escuro/sistema · busca (⌘K / Ctrl K) · funciona offline.
 
 ## Rodar localmente
 

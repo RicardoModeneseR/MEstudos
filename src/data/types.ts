@@ -118,6 +118,34 @@ export interface Assessment extends Base {
   order: number;
 }
 
+export interface QuizQuestion {
+  id: string;
+  stem: string;
+  options: string[];
+  answer: number; // índice da alternativa correta
+  explanation?: string;
+}
+
+export interface QuizAttempt {
+  at: string; // timestamp ISO
+  date: ISODate;
+  answers: (number | null)[];
+  correct: number;
+  total: number;
+}
+
+export interface Quiz extends Base {
+  topicId: string;
+  subjectId: string;
+  title: string;
+  level: QuizLevel;
+  questions: QuizQuestion[];
+  attempts: QuizAttempt[];
+  createdAt: string;
+}
+
+export type QuizLevel = 'basico' | 'intermediario' | 'residencia';
+
 export type GradeMethod = 'ponderada' | 'aritmetica';
 
 export interface Settings extends Base {
@@ -144,6 +172,7 @@ export interface Collections {
   planBlocks: PlanBlock;
   sessions: FocusSession;
   assessments: Assessment;
+  quizzes: Quiz;
   settings: Settings;
 }
 
@@ -158,6 +187,7 @@ export const COLLECTIONS: CollectionName[] = [
   'planBlocks',
   'sessions',
   'assessments',
+  'quizzes',
   'settings',
 ];
 

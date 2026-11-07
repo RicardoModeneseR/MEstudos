@@ -163,7 +163,9 @@ function ClassEditor({ initial, onClose }: { initial: Partial<ClassSlot>; onClos
   const [apply, setApply] = useState<Apply>('futuras');
   const set = (p: Partial<ClassSlot>) => setC((x) => ({ ...x, ...p }));
   const ref = useRef<HTMLElement>(null);
-  useEffect(() => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), []);
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, []);
   const isNew = !initial.id;
   const valid = !!c.subjectId && !!c.start && !!c.end && c.start < c.end;
   // só faz sentido preservar o histórico se a aula já aconteceu antes de hoje

@@ -16,6 +16,7 @@ import { PomodoroPage } from './pages/Pomodoro';
 import { GradesPage } from './pages/Grades';
 import { SettingsPage } from './pages/Settings';
 import { MorePage } from './pages/More';
+import { QuizPage } from './pages/Quiz';
 
 export function App() {
   const [session, setSession] = useState<Session | null | undefined>(supabase ? undefined : null);
@@ -36,7 +37,7 @@ export function App() {
   useEffect(() => {
     if (!supabase || session === undefined) return;
     if (userId) {
-      loadScope(userId, session?.user.email ?? null).then(() => setOfferImport(hasLocalData()));
+      loadScope(userId, session?.user.email ?? null).then(() => setOfferImport(hasLocalData())).catch(console.error);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
@@ -59,6 +60,7 @@ export function App() {
           <Route path="notas" element={<GradesPage />} />
           <Route path="ajustes" element={<SettingsPage />} />
           <Route path="mais" element={<MorePage />} />
+          <Route path="quiz/:id" element={<QuizPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

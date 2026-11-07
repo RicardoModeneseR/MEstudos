@@ -12,6 +12,7 @@ import { Markdown } from '../lib/markdown';
 import { supabase } from '../lib/supabase';
 import { uid } from '../lib/ids';
 import { cx, Empty, Field, Modal, Progress, Segmented, toast, Toggle } from '../components/ui';
+import { StudyWithChatGPT } from '../components/ChatGPT';
 import type { Material, Subject, SubjectColor, Topic, TopicStatus } from '../data/types';
 
 const STATUS_LABEL: Record<TopicStatus, string> = { nao_vi: 'não vi', estudei: 'estudei', revisado: 'revisado' };
@@ -231,6 +232,8 @@ function TopicDetail({ topic, subject, onBack }: { topic: Topic; subject?: Subje
       <SummaryEditor topic={topic} />
       <Materials topic={topic} />
       <hr className="divider" />
+      <StudyWithChatGPT topic={topic} subject={subject} />
+      <hr className="divider" />
       <SpacedReview topic={topic} />
       {editing && <TopicModal topic={topic} onClose={() => setEditing(false)} onSaved={() => undefined} />}
     </section>
@@ -396,7 +399,9 @@ function Materials({ topic }: { topic: Topic }) {
 function SpacedReview({ topic }: { topic: Topic }) {
   const today = useToday();
   const [intervals, setIntervals] = useState(topic.intervals);
-  useEffect(() => setIntervals(topic.intervals), [topic.intervals]);
+  useEffect(() => {
+    setIntervals(topic.intervals);
+  }, [topic.intervals]);
   const dirty = intervals.join() !== topic.intervals.join();
   const next = nextPendingReview(topic);
 

@@ -212,7 +212,8 @@ async function pull() {
 let channel: RealtimeChannel | null = null;
 function subscribe(userId: string) {
   if (!supabase) return;
-  channel?.unsubscribe();
+  // remove o canal anterior de verdade: reaproveitar o mesmo nome após subscribe() lança erro no supabase-js
+  if (channel) supabase.removeChannel(channel);
   channel = supabase
     .channel(`records:${userId}`)
     .on('postgres_changes', { event: '*', schema: 'public', table: 'records', filter: `user_id=eq.${userId}` }, (payload) => {
@@ -228,11 +229,16 @@ export async function loadScope(userId: string | null, email: string | null = nu
   queue = readJSON<QueueItem[]>(queueKey(), []);
   useStore.setState({ db, loaded: true });
   if (userId) {
-    subscribe(userId);
-    await pull();
+    try {
+      subscribe(userId);
+      await pull();
+    } catch (e) {
+      console.error('Falha ao sincronizar', e);
+      useStore.setState({ sync: 'error' });
+    }
     scheduleFlush(0);
   } else {
-    channel?.unsubscribe();
+    if (channel && supabase) supabase.removeChannel(channel);
     channel = null;
   }
 }
@@ -241,9 +247,13 @@ export async function loadScope(userId: string | null, email: string | null = nu
 export function resync() {
   const { userId } = useStore.getState();
   if (!userId) return;
-  pull();
+  try {
+    subscribe(userId);
+  } catch (e) {
+    console.error(e);
+  }
+  pull().catch(console.error);
   scheduleFlush(0);
-  subscribe(userId);
 }
 
 /** Copia os dados do modo local para a conta (usado no primeiro login). */

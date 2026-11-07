@@ -201,7 +201,9 @@ export function Layout() {
     return () => clearInterval(id);
   }, []);
 
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform);
   const weekOfTerm = term ? Math.min(Math.ceil((diffDays(term.start, today) + 1) / 7), Math.ceil((diffDays(term.start, term.end) + 1) / 7)) : null;
@@ -213,7 +215,7 @@ export function Layout() {
       <div className="main">
         <header className="topbar">
           <div className="crumbs">
-            Meu caderno <ChevronRight size={14} /> <strong>{TITLES[pathname] ?? ''}</strong>
+            Meu caderno <ChevronRight size={14} /> <strong>{TITLES[pathname] ?? (pathname.startsWith('/quiz') ? 'Questões do tema' : '')}</strong>
           </div>
           <button className="search-trigger" onClick={() => setPalette(true)}>
             <Search size={15} /> Buscar tema, resumo ou evento <kbd>{isMac ? '⌘' : 'Ctrl'} K</kbd>
@@ -250,7 +252,7 @@ export function Layout() {
             key={to}
             to={to}
             end={end}
-            className={({ isActive }) => cx('tab', (isActive || (to === '/mais' && ['/grade', '/questoes', '/planejamento', '/notas', '/ajustes'].includes(pathname))) && 'active')}
+            className={({ isActive }) => cx('tab', (isActive || (to === '/mais' && ['/grade', '/questoes', '/planejamento', '/notas', '/ajustes'].includes(pathname)) || (to === '/temas' && pathname.startsWith('/quiz'))) && 'active')}
           >
             <Icon />
             {label}

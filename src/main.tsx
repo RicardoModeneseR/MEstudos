@@ -13,11 +13,14 @@ import './styles/components.css';
 import './styles/pages.css';
 import './lib/theme';
 import { App } from './App';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 registerSW({ immediate: true });
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </StrictMode>,
 );
