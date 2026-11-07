@@ -1,0 +1,113 @@
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f5f1ea;
+  --sidebar: #fbf9f5;
+  --surface: #fdfbf8;
+  --surface-2: #f3eee7;
+  --surface-3: #ebe5dc;
+  --border: #e6dfd5;
+  --border-strong: #d6cdc1;
+  --text: #2a2226;
+  --text-2: #6c6267;
+  --text-3: #998f94;
+
+  --primary: #5b2547;
+  --primary-hover: #4a1d3a;
+  --on-primary: #ffffff;
+  --primary-soft: #f0e3ea;
+  --primary-soft-2: #e6d2de;
+  --primary-soft-text: #5b2547;
+  --primary-track: #e9e0e5;
+
+  --success: #3c7a53;
+  --success-soft: #e3eee5;
+  --warning: #9c5b1c;
+  --warning-soft: #f7e9d7;
+  --warning-border: #ecd1ac;
+  --danger: #a13a3a;
+  --danger-soft: #f6e1df;
+
+  --c-plum: #f0e3ea;
+  --c-plum-ink: #5b2547;
+  --c-sage: #e3ede5;
+  --c-sage-ink: #35684a;
+  --c-sand: #f1ece3;
+  --c-sand-ink: #6b5a40;
+  --c-rose: #f7e2e2;
+  --c-rose-ink: #8e3b3b;
+  --c-sky: #e2ebf3;
+  --c-sky-ink: #305a7c;
+  --c-amber: #f7ead3;
+  --c-amber-ink: #8a5a14;
+
+  --shadow-sm: 0 1px 2px rgba(60, 40, 50, 0.04);
+  --shadow: 0 1px 2px rgba(60, 40, 50, 0.04), 0 4px 16px rgba(60, 40, 50, 0.05);
+  --shadow-lg: 0 12px 40px rgba(40, 20, 30, 0.18);
+  --focus: 0 0 0 3px rgba(91, 37, 71, 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #1d191c;
+  --sidebar: #221e21;
+  --surface: #272226;
+  --surface-2: #2f292e;
+  --surface-3: #383136;
+  --border: #3a3338;
+  --border-strong: #4a4248;
+  --text: #f2ecef;
+  --text-2: #b8adb3;
+  --text-3: #877b81;
+
+  --primary: #e8b8d3;
+  --primary-hover: #f1c9df;
+  --on-primary: #3a1730;
+  --primary-soft: #46293c;
+  --primary-soft-2: #573349;
+  --primary-soft-text: #f1c9de;
+  --primary-track: #3d3439;
+
+  --success: #8fcca0;
+  --success-soft: #213628;
+  --warning: #e7b36e;
+  --warning-soft: #3e2e1d;
+  --warning-border: #5d4428;
+  --danger: #ec9c9c;
+  --danger-soft: #472526;
+
+  --c-plum: #46293c;
+  --c-plum-ink: #f1c9de;
+  --c-sage: #263a2d;
+  --c-sage-ink: #a9d6b5;
+  --c-sand: #37302a;
+  --c-sand-ink: #e2cfb0;
+  --c-rose: #452728;
+  --c-rose-ink: #f0b4b4;
+  --c-sky: #22313f;
+  --c-sky-ink: #a8c8e6;
+  --c-amber: #40321c;
+  --c-amber-ink: #ecc98a;
+
+  --shadow-sm: none;
+  --shadow: none;
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --focus: 0 0 0 3px rgba(232, 184, 211, 0.25);
+}
+
+:root {
+  --font-serif: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --sidebar-w: 248px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
